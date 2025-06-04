@@ -1,31 +1,27 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven 3.9.6' // Name must match the Maven installation name in Jenkins
-    }
-
     triggers {
-        pollSCM('* * * * *') // or use webhook from GitHub for auto-trigger
+        pollSCM('* * * * *')
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Package') {
             steps {
                 echo 'Packaging...'
-                sh 'mvn package'
+                bat 'mvn package'
             }
         }
     }
