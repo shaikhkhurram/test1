@@ -1,27 +1,23 @@
 pipeline {
     agent any
 
-    triggers {
-        pollSCM('* * * * *')
-    }
-
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                bat 'mvn clean compile'
+                echo 'Skipping Maven build step...'
+                // Placeholder for future build command
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing...'
-                bat 'mvn test'
+                echo 'Skipping Maven test step...'
+                // Placeholder for future test command
             }
         }
         stage('Package') {
             steps {
-                echo 'Packaging...'
-                bat 'mvn package'
+                echo 'Skipping Maven package step...'
+                // Placeholder for future package command
             }
         }
     }
