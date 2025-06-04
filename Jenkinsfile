@@ -1,22 +1,27 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('* * * * *') // or use webhook from GitHub for auto-trigger
+    }
+
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
+                sh 'mvn clean compile'
             }
         }
-
         stage('Test') {
             steps {
                 echo 'Testing...'
+                sh 'mvn test'
             }
         }
-
-        stage('Deploy') {
+        stage('Package') {
             steps {
-                echo 'Deploying...'
+                echo 'Packaging...'
+                sh 'mvn package'
             }
         }
     }
